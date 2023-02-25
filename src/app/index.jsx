@@ -1,0 +1,29 @@
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+
+import "app/dataBase/firebaseAppDb";
+
+import "./index.css";
+
+import { StyleProvider } from "@ant-design/cssinjs";
+
+import AppRouter from "pages";
+
+function App() {
+  return (
+    <div className="w-screen h-screen">
+      <BrowserRouter>
+        <Provider store={store}>
+          <StyleProvider hashPriority="high">
+            <AppRouter />
+          </StyleProvider>
+        </Provider>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
