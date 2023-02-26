@@ -13,7 +13,7 @@ const AuthLayout = () => {
   const { user } = useAuth();
   if (user) return <Navigate to="/" />;
   return (
-    <Layout>
+    <Layout className="overflow-hidden">
       <Header className="mb-6">
         <AuthNav />
       </Header>
