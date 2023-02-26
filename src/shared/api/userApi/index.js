@@ -45,11 +45,11 @@ export const userApi = createApi({
     }),
 
     updateUser: build.mutation({
-      async queryFn({ id, values }) {
+      async queryFn({ id, payload }) {
         try {
           const docRef = doc(db, USER_ENDPOINT, id);
-          await updateDoc(docRef, values);
-          return { data: values };
+          await updateDoc(docRef, payload);
+          return { data: payload };
         } catch (error) {
           return { error: error };
         }
