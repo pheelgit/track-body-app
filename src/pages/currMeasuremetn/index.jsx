@@ -17,6 +17,7 @@ export const CurrMeasurement = () => {
   const content = (
     <>
       <Segmented
+        style={{ width: "100%", justifyContent: "center", overflowX: "scroll" }}
         defaultValue={curr}
         options={measurementsConfig}
         onChange={(newCurr) => navigate(`/measurement/${newCurr}`)}

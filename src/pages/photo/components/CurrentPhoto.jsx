@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Image, Typography, Card, Carousel } from "antd";
+import { Image, Typography, Card, Carousel, Divider } from "antd";
 
 import { DeleteOutlined } from "@ant-design/icons";
 import { useDatesToSelect } from "../../../shared/hooks/useDatesToSelect";
@@ -19,7 +19,10 @@ const CurrentPhoto = () => {
 
   const carouselGroup = arrToSelect?.map(({ value }) => (
     <div key={value}>
-      <Typography.Text strong>{value}</Typography.Text>
+      <Divider />
+      <Typography.Text strong className="block text-center text-xl ">
+        {value}
+      </Typography.Text>
       <Carousel style={{ background: "gray", paddingBottom: "2.5rem" }}>
         {allPhotos[value].map((el) => {
           const type = Object.keys(el)[0];

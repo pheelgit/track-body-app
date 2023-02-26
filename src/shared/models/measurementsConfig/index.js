@@ -5,5 +5,4 @@ export const measurementsConfig = [
   "hips",
   "thighs",
   "weight",
-  "height",
 ];
