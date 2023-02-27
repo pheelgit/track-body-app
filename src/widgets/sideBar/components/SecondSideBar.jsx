@@ -29,7 +29,7 @@ export const SecondSideBar = () => {
     <Drawer
       title="Two-level Drawer"
       placement="left"
-      width="100%"
+      width="90%"
       onClose={closeSecondSideBar}
       open={open}
       closeIcon={<RollbackOutlined />}

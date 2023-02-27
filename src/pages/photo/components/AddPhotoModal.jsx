@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
 
-import { Button, DatePicker, Form, Input, Modal, Select, Upload } from "antd";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  Modal,
+  Select,
+  Upload,
+  message,
+} from "antd";
 import { PlusOutlined, LoadingOutlined } from "@ant-design/icons";
 
 import { userApi } from "shared/api/userApi";
 import photoService from "pages/photo/api/photoService";
 import { useAddPhotoMutation } from "pages/photo/api/photoApi";
-
-const defaultPhotoData = {
-  date: dayjs(),
-  type: "",
-  image: "",
-};
 
 const selectOption = [
   {
@@ -33,6 +36,12 @@ const selectOption = [
   },
 ];
 
+const defaultPhotoData = {
+  date: dayjs(),
+  type: selectOption[0].value,
+  image: undefined,
+};
+
 const AddPhotoModal = ({ show, setShow, initialValues }) => {
   const { data: userData } = userApi.useGetUserDataQuery();
 
@@ -46,9 +55,20 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [imageFileList, setImageFileList] = useState();
 
+  const [messageApi, contextHolder] = message.useMessage();
+
   const handleModalOk = async () => {
-    setConfirmLoading(true);
     const fieldValues = form.getFieldsValue(true);
+    if (!fieldValues.image) {
+      messageApi.open({
+        key: "updatable",
+        type: "warning",
+        content: "добавьте изображение!",
+      });
+      return;
+    }
+
+    setConfirmLoading(true);
 
     const payload = {
       ...fieldValues,
@@ -102,7 +122,8 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
   );
 
   const test = () => {
-    console.log(form.getFieldsValue(true));
+    const data = form.isFieldsValidating(["image"]);
+    console.log(data);
   };
 
   return (
@@ -112,6 +133,7 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
       onCancel={handleModalCancel}
       confirmLoading={confirmLoading}
     >
+      {contextHolder}
       <Form
         form={form}
         name="add_photo"
@@ -124,14 +146,14 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
           <DatePicker format={"DD-MMM-YY"} allowClear={false} />
         </Form.Item>
 
-        <Form.Item label={"type"} name="type" required>
+        <Form.Item label={"type"} name="type">
           <Select options={selectOption} />
         </Form.Item>
-        <Form.Item name="image">
+        <Form.Item name="image" required>
           <Upload
             name="avatar"
             listType="picture-card"
-            action={null}
+            // action={null}
             showUploadList={false}
             onChange={handleChangeImage}
             fileList={imageFileList}

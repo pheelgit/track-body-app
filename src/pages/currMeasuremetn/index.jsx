@@ -2,12 +2,13 @@ import React from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { CMTable, CMCreate, CMChart, CMNotes } from "./components";
+import { measurementsConfig } from "shared/models/measurementsConfig";
+
+import { UserLayout } from "shared/ui/userLayout";
 import { Header } from "widgets/header";
 import { UserNav } from "widgets/userNav";
 import { SideBar } from "widgets/sideBar";
-import { UserLayout } from "shared/ui/userLayout";
-import { measurementsConfig } from "shared/models/measurementsConfig";
+import { CMTable, CMCreate, CMChart, CMNotes } from "./components";
 import { Space, Card, Segmented } from "antd";
 
 export const CurrMeasurement = () => {
@@ -19,8 +20,6 @@ export const CurrMeasurement = () => {
       <Segmented
         style={{
           width: "100%",
-          display: "flex",
-          justifyContent: "center",
           overflowX: "scroll",
         }}
         defaultValue={curr}

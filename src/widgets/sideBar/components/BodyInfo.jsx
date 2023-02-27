@@ -3,7 +3,15 @@ import dayjs from "dayjs";
 
 import { userApi } from "shared/api/userApi";
 
-import { Button, Form, Radio, InputNumber, Space, DatePicker } from "antd";
+import {
+  Button,
+  Form,
+  Radio,
+  InputNumber,
+  Space,
+  DatePicker,
+  message,
+} from "antd";
 
 const GENDER = {
   male: "male",
@@ -15,17 +23,41 @@ export const BodyInfo = () => {
   const [updateUser] = userApi.useUpdateUserMutation();
   const { gender, birthday, height, id } = userInfo;
 
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const key = "updatable";
+
+  const openMessage = () => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Обновление...",
+    });
+  };
+
+  const successMessage = () => {
+    messageApi.open({
+      key,
+      type: "success",
+      content: "Данные обновлены!",
+      duration: 2,
+    });
+  };
+
   const handleSubmitForm = async (values) => {
     const payload = {
       ...values,
       birthday: values.birthday.format("DD-MMM-YY"),
     };
+    openMessage();
 
     await updateUser({ id, payload });
+    successMessage();
   };
 
   return (
     <>
+      {contextHolder}
       <Form
         name="bodyInfo"
         onFinish={handleSubmitForm}
@@ -58,7 +90,7 @@ export const BodyInfo = () => {
 
         <Form.Item>
           <Space>
-            <Button htmlType="submit" type="primary" children="подтвердить" />
+            <Button htmlType="submit" type="primary" children="обновить" />
           </Space>
         </Form.Item>
       </Form>
