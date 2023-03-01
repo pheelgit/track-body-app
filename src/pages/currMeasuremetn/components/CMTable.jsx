@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import dayjs from "dayjs";
 
 import { useParams } from "react-router-dom";
-import { useMeasurementData } from "pages/currMeasuremetn/hooks/useMeasurementData";
 
 import { Button, DatePicker, InputNumber, Modal, Table } from "antd";
 import {
@@ -24,7 +23,7 @@ const columns = [
   },
 ];
 
-export const CMTable = () => {
+export const CMTable = ({ measurementsData }) => {
   const { curr } = useParams();
 
   const { data: userData } = userApi.useGetUserDataQuery();
@@ -36,8 +35,6 @@ export const CMTable = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
-
-  const currData = useMeasurementData();
 
   const handleTableClick = (record, rowIndex) => {
     const date = dayjs(record.date);
@@ -93,7 +90,7 @@ export const CMTable = () => {
     <>
       <Table
         columns={columns}
-        dataSource={currData}
+        dataSource={measurementsData}
         pagination={{
           position: ["none", "none"],
         }}

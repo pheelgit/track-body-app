@@ -1,12 +1,9 @@
 import React from "react";
 import { Line } from "@ant-design/plots";
 
-import { useMeasurementData } from "pages/currMeasuremetn/hooks/useMeasurementData";
-
-export const CMChart = () => {
-  const chartData = useMeasurementData();
+export const CMChart = ({ measurementsData }) => {
   const lineConfig = {
-    data: chartData,
+    data: measurementsData,
     xField: "date",
     yField: "size",
     smooth: true,
@@ -24,10 +21,6 @@ export const CMChart = () => {
       end: 1,
     },
   };
-
-  if (chartData.length < 2) {
-    return null;
-  }
 
   return <Line {...lineConfig} />;
 };

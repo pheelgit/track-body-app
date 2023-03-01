@@ -10,10 +10,12 @@ import { UserNav } from "widgets/userNav";
 import { SideBar } from "widgets/sideBar";
 import { CMTable, CMCreate, CMChart, CMNotes } from "./components";
 import { Space, Card, Segmented } from "antd";
+import { useMeasurementData } from "./hooks/useMeasurementData";
 
 export const CurrMeasurement = () => {
   const { curr } = useParams();
   const navigate = useNavigate();
+  const { measurementsData } = useMeasurementData();
 
   const content = (
     <>
@@ -34,12 +36,18 @@ export const CurrMeasurement = () => {
         <Card title={`Notes for ${curr}`}>
           <CMNotes />
         </Card>
-        <Card>
-          <CMChart />
-        </Card>
-        <Card title="measurements">
-          <CMTable />
-        </Card>
+
+        {measurementsData.length > 1 && (
+          <Card>
+            <CMChart measurementsData={measurementsData} />
+          </Card>
+        )}
+
+        {measurementsData.length > 0 && (
+          <Card title="measurements">
+            <CMTable measurementsData={measurementsData} />
+          </Card>
+        )}
       </Space>
     </>
   );
