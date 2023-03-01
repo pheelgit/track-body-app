@@ -6,6 +6,7 @@ import { store } from "./store/store";
 
 import "app/dataBase/firebaseAppDb";
 
+import "./utils/resizeHeight";
 import "./index.css";
 
 import { StyleProvider } from "@ant-design/cssinjs";

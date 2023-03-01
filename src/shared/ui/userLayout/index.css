@@ -1,0 +1,14 @@
+.user-layout {
+  height: 100%;
+  height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.user-layout--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-layout--content {
+  overflow: scroll;
+}

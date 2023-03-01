@@ -9,17 +9,10 @@ html,
   padding: 0;
 }
 
-/* body {
-  display: flex;
-  flex-direction: column;
-} */
+body {
+  height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
 #root {
-  /* flex: 1; */
-  display: flex;
-}
-#app {
   flex: 1;
-  min-height: 100vh;
 }
-
-/* className="w-screen h-screen" */

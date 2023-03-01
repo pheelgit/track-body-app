@@ -24,5 +24,10 @@ export const CMChart = () => {
       end: 1,
     },
   };
+
+  if (chartData.length < 2) {
+    return null;
+  }
+
   return <Line {...lineConfig} />;
 };
