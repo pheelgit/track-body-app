@@ -14,7 +14,7 @@ import AppRouter from "pages";
 
 function App() {
   return (
-    <div className="w-screen h-screen">
+    <div id="app">
       <BrowserRouter>
         <Provider store={store}>
           <StyleProvider hashPriority="high">

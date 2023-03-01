@@ -7,7 +7,19 @@ html,
 #app {
   margin: 0;
   padding: 0;
-  /* width: 100%; */
-  /* height: auto; */
-  /* overflow: hidden; */
 }
+
+/* body {
+  display: flex;
+  flex-direction: column;
+} */
+#root {
+  /* flex: 1; */
+  display: flex;
+}
+#app {
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* className="w-screen h-screen" */
