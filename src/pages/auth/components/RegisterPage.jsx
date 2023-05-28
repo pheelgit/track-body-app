@@ -7,7 +7,7 @@ import { Button, Form, Input } from "antd";
 const RegisterPage = () => {
   const [addUser] = userApi.useCreateUserMutation();
 
-  const handleLogin = async (values) => {
+  const handleRegister = async (values) => {
     try {
       await addUser(values);
     } catch (error) {
@@ -20,7 +20,7 @@ const RegisterPage = () => {
   return (
     <Form
       name="authentication"
-      onFinish={handleLogin}
+      onFinish={handleRegister}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
@@ -53,6 +53,7 @@ const RegisterPage = () => {
       <Form.Item
         label="Password"
         name="password"
+        autocomplete="new-password"
         rules={[
           {
             required: true,

@@ -12,6 +12,7 @@ const LoginPage = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <Form
       name="authentication"
@@ -35,6 +36,7 @@ const LoginPage = () => {
       <Form.Item
         label="Password"
         name="password"
+        autocomplete="current-password"
         rules={[
           {
             required: true,

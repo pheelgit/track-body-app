@@ -8,9 +8,9 @@ const AuthNav = () => {
   let [_, setSearchParams] = useSearchParams();
 
   //set default params
-  useEffect(() => {
-    setSearchParams({ type: "login" });
-  }, [setSearchParams]);
+  // useEffect(() => {
+  //   setSearchParams({ type: "login" });
+  // }, [setSearchParams]);
 
   const handleParams = ({ target: { value } }) => {
     setSearchParams({ type: value });

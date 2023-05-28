@@ -10,8 +10,8 @@ const AuthRouter = () => {
 
   return (
     <>
-      {type === "login" && <LoginPage />}
       {type === "registration" && <RegisterPage />}
+      {type === "login" && <LoginPage />}
     </>
   );
 };

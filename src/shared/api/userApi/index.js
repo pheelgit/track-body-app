@@ -35,7 +35,8 @@ export const userApi = createApi({
           //add to server
 
           await setDoc(doc(db, USER_ENDPOINT, newUser.id), newUser);
-          // data or body,вроде не ломается ничего
+          await setDoc(doc(db, "photos", newUser.id), { datesArray: [] });
+
           return { data: newUser };
         } catch (error) {
           return { error: error };
