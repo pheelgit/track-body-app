@@ -1,12 +1,6 @@
 import { auth } from "app/dataBase/firebaseAppDb";
 
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 export const authService = {
   isAuth() {

@@ -11,7 +11,7 @@ export const CMNotes = () => {
   const { curr } = useParams();
   const [noteValue, setNoteValue] = useState("");
 
-  const [addNote, { isLoading: noteLoading }] = useCreateNoteMutation();
+  const [addNote] = useCreateNoteMutation();
   const { data: userData } = userApi.useGetUserDataQuery();
   const { data: notesData, isLoading: isLoadingNotesData } = useGetNotesQuery(
     userData.id

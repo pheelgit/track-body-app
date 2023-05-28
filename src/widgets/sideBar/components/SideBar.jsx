@@ -12,7 +12,7 @@ import { Button, Drawer } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
 export const SideBar = () => {
-  const [searchParams, _] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { data: userInfo, isLoading: userInfoIsLoading } =
     userApi.useGetUserDataQuery();
 

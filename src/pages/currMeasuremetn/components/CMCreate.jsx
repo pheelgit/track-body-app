@@ -13,8 +13,7 @@ export const CMCreate = () => {
   const { curr } = useParams();
   const { data: userData } = userApi.useGetUserDataQuery();
 
-  const [addMeasurement, { isLoading: measurementLoading }] =
-    useCreateMeasurementMutation();
+  const [addMeasurement] = useCreateMeasurementMutation();
 
   const newMeasurement = useRef({
     size: undefined,

@@ -1,12 +1,5 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  getDocs,
-  collection,
-} from "firebase/firestore";
+import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "app/dataBase/firebaseAppDb";
 
 const MEASUREMENTS_ENDPOINT = "measurements";

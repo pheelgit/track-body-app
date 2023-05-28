@@ -2,7 +2,6 @@ import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   doc,
   setDoc,
-  getDoc,
   updateDoc,
   deleteDoc,
   collection,

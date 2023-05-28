@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
 
-import {
-  Button,
-  DatePicker,
-  Form,
-  Input,
-  Modal,
-  Select,
-  Upload,
-  message,
-} from "antd";
+import { DatePicker, Form, Modal, Select, Upload, message } from "antd";
 import { PlusOutlined, LoadingOutlined } from "@ant-design/icons";
 
 import { userApi } from "shared/api/userApi";
@@ -53,7 +44,7 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
   const [loading, setLoading] = useState(false);
 
   const [imageUrl, setImageUrl] = useState("");
-  const [imageFileList, setImageFileList] = useState();
+  const [imageFileList] = useState();
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -121,11 +112,6 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
     </div>
   );
 
-  const test = () => {
-    const data = form.isFieldsValidating(["image"]);
-    console.log(data);
-  };
-
   return (
     <Modal
       open={show}
@@ -134,14 +120,7 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
       confirmLoading={confirmLoading}
     >
       {contextHolder}
-      <Form
-        form={form}
-        name="add_photo"
-        // onFinish={handleForm}
-        initialValues={defaultPhotoData}
-      >
-        <Button onClick={test}>formState</Button>
-
+      <Form form={form} name="add_photo" initialValues={defaultPhotoData}>
         <Form.Item name="date" required>
           <DatePicker format={"DD-MMM-YY"} allowClear={false} />
         </Form.Item>
@@ -153,7 +132,6 @@ const AddPhotoModal = ({ show, setShow, initialValues }) => {
           <Upload
             name="avatar"
             listType="picture-card"
-            // action={null}
             showUploadList={false}
             onChange={handleChangeImage}
             fileList={imageFileList}

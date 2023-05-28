@@ -4,12 +4,13 @@ import { useSearchParams } from "react-router-dom";
 import { Radio } from "antd";
 
 const AuthNav = () => {
+  // eslint-disable-next-line
   let [_, setSearchParams] = useSearchParams();
 
   //set default params
   useEffect(() => {
     setSearchParams({ type: "login" });
-  }, []);
+  }, [setSearchParams]);
 
   const handleParams = ({ target: { value } }) => {
     setSearchParams({ type: value });
