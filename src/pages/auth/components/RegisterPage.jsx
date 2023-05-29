@@ -22,7 +22,6 @@ const RegisterPage = () => {
       name="authentication"
       onFinish={handleRegister}
       onFinishFailed={onFinishFailed}
-      autoComplete="off"
     >
       <Form.Item
         label="username"
@@ -53,7 +52,6 @@ const RegisterPage = () => {
       <Form.Item
         label="Password"
         name="password"
-        autocomplete="new-password"
         rules={[
           {
             required: true,

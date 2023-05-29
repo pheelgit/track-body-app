@@ -18,11 +18,12 @@ const LoginPage = () => {
       name="authentication"
       onFinish={handleLogin}
       onFinishFailed={onFinishFailed}
-      autoComplete="off"
+      initialValues={{ email: "work@ya.ru", password: "йцуйцуйцу" }}
     >
       <Form.Item
         label="email"
         name="email"
+        defaultValue="qwe"
         rules={[
           {
             required: true,
@@ -36,7 +37,6 @@ const LoginPage = () => {
       <Form.Item
         label="Password"
         name="password"
-        autocomplete="current-password"
         rules={[
           {
             required: true,
